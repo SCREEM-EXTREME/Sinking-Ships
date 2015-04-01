@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="Sinking Ships" content="">
+    <meta name="Kenneth Chan" content="">
+    <!-- Jquery stuff -->
+    <link rel="stylesheet" href="https//code.jquery.com/ui/1.11.2/themes/smoothness/jquery-ui.css">  
+    <script type="text/javascript" src="https://code.jquery.com/ui/1.11.2/jquery-ui.min.js"></script>
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+    
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/custom.css" rel="stylesheet">
+    <head>
+    <h1> Ready to Sink Some Ships?</h1>
+    <title>Sinking Ships</title>
+    </head>
+    <body>
+      <div id="gameBoard">
+        <div id="messageArea"></div>
+         <table>
+            <tr>
+              <td id="00"class="hit"></td><td id="01"class="hit"></td><td id="02"class="hit"></td><td id="03"class="hit"></td><td id="04"class="hit"></td><td id="05"class="hit"></td><td id="06"class="miss"></td>
+            </tr> 
+            <tr>
+              <td id="10"class="hit"class="miss"></td><td id="11"class="miss"></td><td id="12"class="miss"></td><td id="13"class="miss"></td><td id="14"class="hit"></td><td id="15"class="miss"></td><td id="16"class="hit"></td>
+            </tr> 
+            <tr>
+              <td id="20"class="hit"></td><td id="21"></td><td id="22"></td><td id="23"></td><td id="24"></td><td id="25"class="miss"></td><td id="26"class="hit"></td>td>
+            </tr> 
+            <tr>
+              <td id="30"class="hit"></td><td id="31"></td><td id="32"></td><td id="33"></td><td id="34"></td><td id="35"></td><td id="36"class="hit"></td>
+            </tr> 
+            <tr>
+              <td id="40"class="hit"></td><td id="41"></td><td id="42"></td><td id="43"></td><td id="44"></td><td id="45"></td><td id="46"class="hit"></td>
+            </tr> 
+            <tr>
+              <td id="50"class="hit"></td><td id="51"></td><td id="52"></td><td id="53"></td><td id="54"></td><td id="55"></td><td id="56"class="hit"></td>
+            </tr> 
+            <tr>
+              <td id="60"class="miss"></td><td id="61"class="miss"></td><td id="62"class="miss"></td><td id="63"class="miss"></td><td id="64"class="miss"></td><td id="65"class="miss"></td><td id="66"class="miss"></td>
+            </tr> 
+          </table>
+          <form>
+              <input type="text" id="guessInput" placeholder="Enter firing coordinates">
+              <input type="button" id="fireAway" value="Launch">
+          </form>
+      </div>
+          <script src="js/application.js"></script>
+    <footer>
+          <p class="enclose problem">Property of Kenneth Chan Copyright 2015 Contact information: <a href="mailto:kennethchan28@outlook.com">kennethchan28@outlook.com</a>.</p>
+    </footer>
+    </body>
+</html>

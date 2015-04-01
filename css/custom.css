@@ -1,0 +1,87 @@
+#gameBoard {
+  position:relative;
+  margin: auto;
+  background: url("radar-illustration-sinking-ships.jpg")no-repeat;
+  width: 1024px;
+  height: 863px;
+  
+
+ }
+
+#messageArea {
+	position: absolute;
+	top: 0px;
+	left: 0px;
+	color: rgb(83, 175, 19);
+}
+table {
+	position: absolute;
+	left: 173px;
+	top:98px;
+	border-spacing: 0px;
+
+}
+td {
+	width: 94px;
+	height: 94px;
+	color: gray;
+
+}
+form {
+	position: absolute;
+	bottom: 0px;
+	right: 0px;
+	padding: 15px;
+	background-color: rgb(83, 175, 19);
+
+}
+form input {
+	background-color: rgb(152, 207, 113);
+	border-color: rgb(83, 175, 19);
+	font-size: 1em;
+
+}
+.hit {
+	background: url("battleship-target-pics.gif")no-repeat center center;
+	background-color: red;
+
+}
+.miss {
+	background: url("Missed_1.png")no-repeat center center;
+	background-color: gray;
+}
+
+h1, h2, label {
+	font-size: 40px;
+	font-style: bold;
+	text-align: center;
+	color: white;
+}
+
+body {
+	background-color: gray;
+	
+}
+
+@media screen and (max-width: 1024px) { /* Specific to this particular image */
+  img.bg {
+    left: 50%;
+    margin-left: -512px;   /* 50% */
+  }
+}
+footer {
+	color: white;
+}
+.problem {
+	text-align:center
+}
+.enclose {
+	position:fixed;
+	bottom:0px;
+	width:100%;
+}
+.layout {
+	color: red;
+}
+
+   
