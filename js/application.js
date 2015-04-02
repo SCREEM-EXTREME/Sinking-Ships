@@ -1,4 +1,4 @@
-//$(document).ready(function() {
+$(document).ready(function() {
 // have to go thru and put in the $ whereever its required. 
 
 //game parameters
