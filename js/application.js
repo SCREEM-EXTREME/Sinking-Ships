@@ -1,118 +1,73 @@
-$(document).ready(function() {
-// have to go thru and put in the $ whereever its required. 
+var board = [[null, null, null, null, null, null, null ],
+             [null, null, null, null, null, null, null ],
+             [null, null, null, null, null, null, null ],
+             [null, null, null, null, null, null, null ],
+             [null, null, null, null, null, null, null ],
+             [null, null, null, null, null, null, null ],
+             [null, null, null, null, null, null, null ]];
 
-//game parameters
-var model = {
-  boardSize: 7,
-  numShips: 3,
-  shipLength: 3,
-  shipsSunk: 0,
+var numOfBoats = 5;
+var numOfGuesses = 0;
 
-  
-// ship locations
-  ships: [
-    { locations: [0, 0, 0], hits: ["", "", ""] },
-    { locations: [0, 0, 0], hits: ["", "", ""] },
-    { locations: [0, 0, 0], hits: ["", "", ""] }
-
-  ],
-//launching torpedoes (shots)
-
-  fire: function(guess) {
-    for (var i = 0; i < this.numShips; i++) {
-      var ship = this.ships[i];
-      var index = ship.locations.indexOf(guess);
-
-//if the choice (guess) has already been chosen and hit then let the user know
-
-      if (ship.hits[index] === "hit") {
-        view.displayMessage("Waste of torpedoes. You already hit these firing coordinates!");
-        return true;
-      } else if (index >= 0) {
-        ship.hits[index] = "hit";
-        view.displayHit(guess);
-        view.displayMessage("HIT!");
-
-        if (this.isSunk(ship)) {
-          view.displayMessage("You destroyed one of my ships!");
-          this.shipsSunk++;
-
-        }
-        return true;
-      }
+// put 5 pieces in the board ramdomly and mark them all as one
+var setup = function () {
+  i = 0;
+  while (i < numOfBoats) {
+    var x = Math.floor(Math.random() * 6) ;
+    var y = Math.floor(Math.random() * 6) ;
+    
+    if (board[x][y] !== 1) {
+      board[x][y] = 1;
+      console.log("boats at " + x + " ," + y);
+      i++
     }
-
-    view.displayMiss(guess);
-    view.displayMessage("Loser. You missed.");
-    return false;
-
-  },
-
-  isSunk: function(ship) {
-    for (var i = 0; i < this.shipLength; i++)  {
-      if (ship.hits[i] !== "hit") {
-        return false;
-      }
-    }
-      return true;
-  },
-
-//random choice of ship locations
-
-  generateShipLocations: function() {
-    var locations;
-    for (var i = 0; i < this.numShips; i++) {
-      do {
-        locations = this.generateShip();
-      } while (this.collision(locations));
-      this.ships[i].locations = locations;
-    }
-
-  },
-
-// random ship direction... on a row or a column...
-  generateShip: function() {
-    var direction = Math.floor(Math.random() * 2);
-    var row, col;
-
-    if (direction === 1) { // horizontal
-      row = Math.floor(Math.random() * this.boardSize);
-      col = Math.floor(Math.random() * (this.boardSize - this.shipLength + 1));
-    } else { // vertical
-      row = Math.floor(Math.random() * (this.boardSize - this.shipLength + 1));
-      col = Math.floor(Math.random() * this.boardSize);
-
-    }
-
-    var view = {
-  displayMessage: function(msg) {
-    var messageArea = document.getElementById("messageArea");
-    messageArea.innerHTML = msg;
-  },
-
-  displayHit: function(location) {
-    var cell = document.getElementById(location);
-    cell.setAttribute("class", "hit");
-  },
-
-  displayMiss: function(location) {
-    var cell = document.getElementById(location);
-    cell.setAttribute("class", "miss");
   }
-}; 
+}
 
+// identify which td user clicked
+$(document).on('click',"td",function(){
+  // <td id="00"></td>
 
+  if (numOfBoats > 0) {
 
+    var x = $(this).attr("id")[0];
+    var y = $(this).attr("id")[1];
 
+    console.log("in this position: (" + x + ", " + y + ") we have a " + board[x][y]);
+    numOfGuesses++; 
 
+    //messageBoard info
+    if (board[x][y] == 1) {
+      numOfBoats--;
+      //alert("it's a hit!");
+      $('#messageBoard').text("It's a hit and you have " + numOfBoats +" left.")
+      $(this).css({
+        
+        "background":"url('image/battleship-target-pics.gif') no-repeat center center", 
+        "background-color":"red"
+      });
+    } else {
+      board[x][y] = 0
+      //alert("too bad, missed"); 
+      $(this).css({
+        
+        "background":"url('image/Missed_1.png') no-repeat center center",
+        "background-color":"green",
+        
+      });
+console.log(this);
+    } 
 
+    // keep track of the total number of guesses
+    if (numOfBoats == 0) {
+      alert("You have won in " + numOfGuesses + " guesses.")
+      //view.messageBoard("You have won in " + numOfGuesses + " guesses."); 
+      // selecting an element by ID
+      $('#messageBoard').text("You have won in " + numOfGuesses + " guesses.")
+      
+    }
+  }
+});
 
-
-
-
-
-
-
-
-
-
+setup();
+console.log(board);
